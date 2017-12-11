@@ -40,6 +40,8 @@ func proc_file(f string) {
 
 	x, y, xmax, xmin, ymax, ymin := 0, 0, 0 ,0, 0, 0
 
+	steps_max := 0
+
 	for _, v := range(data) {
 		switch(v) {
 		case "n":
@@ -72,6 +74,11 @@ func proc_file(f string) {
 		if x < ymin {
 			ymin = y
 		}
+
+		num_steps := walk(x,y,0)
+		if num_steps > steps_max {
+			steps_max = num_steps
+		}
 	}
 
 	fmt.Printf("Our final coordinates are (%d,%d)\n",x,y)
@@ -80,6 +87,8 @@ func proc_file(f string) {
 	fmt.Printf("starting a walk\n")
 	steps := walk(x,y,0)
 	fmt.Printf("total steps: %d\n",steps)
+
+	fmt.Printf("biggest steps: %d\n", steps_max)
 }
 
 func main() {
