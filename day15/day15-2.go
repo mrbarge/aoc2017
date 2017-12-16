@@ -6,11 +6,7 @@ import (
 )
 
 func lower_bits_match(a int64, b int64) bool {
-	if (a & 0x0000FFFF) == (b & 0x0000FFFF) {
-		return true
-	} else {
-		return false
-	}
+	return (a & 0x0000FFFF) == (b & 0x0000FFFF)
 }
 
 func valid_gen_a_result(a int64) bool {
